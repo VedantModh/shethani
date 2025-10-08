@@ -190,9 +190,7 @@ body {
     cursor: pointer;
 }
 
-.card:hover {
-    /* transform: translateY(-10px); */
-}
+
 
 .card h3 {
     font-family: 'salmond', sans-serif;
@@ -295,9 +293,13 @@ body {
 }
 
 .empty-box {
-    background-color: #E0E0E0;
+    background-image: url('card3.png');
     grid-column: 3 / 4;
     grid-row: 3 / 4;
+    background-size: cover;
+    object-position: end;
+    object-fit: fill;
+    background-repeat: no-repeat;
 }
 
 .food-items {

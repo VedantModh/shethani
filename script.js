@@ -204,13 +204,13 @@ var tl = gsap.timeline({
   scrollTrigger: {
     trigger: "#section-1",
     start: "0% ",
-    end: "60%",
+    end: "50%",
     scrub: true,
   },
 });
 
 tl.to("#image-sec", {
-  top: "90%",
+  top: "85%",
   left: "-30%",
   rotate: "17deg",
   scale: "0.8",
