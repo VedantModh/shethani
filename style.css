@@ -692,3 +692,68 @@ body {
     width: 120px;
   }
 }
+
+
+.oil{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    rotate: 30deg;
+    /* transform: translate(-50%, -50%); */
+}
+
+.oil img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: oil-float-sway 1.6s ease-in-out infinite;
+}
+
+@keyframes oil-float-sway {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(-20deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.oil1{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0%;
+    right: 5%;
+    rotate: -3deg;
+    /* transform: translate(-50%, -50%); */
+}
+
+.oil1 img{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    animation: oil-float-sway1 1.6s ease-in-out infinite;
+}
+
+@keyframes oil-float-sway1 {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(20deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
