@@ -114,7 +114,7 @@ body {
 
 #section-3 {
     width: 100%;
-    height: 100vh;
+    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -123,6 +123,64 @@ body {
     position: relative;
     overflow: hidden;
 }
+
+/* ===== Infinite Ticker ===== */
+.ticker {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 40px 0 60px;
+}
+
+.ticker__row {
+    width: 100%;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.ticker__track {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    white-space: nowrap;
+    will-change: transform;
+    animation: ticker-move 20s linear infinite;
+}
+
+.ticker__row--reverse .ticker__track {
+    animation-direction: reverse;
+}
+
+@keyframes ticker-move {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-family: 'salmond', sans-serif;
+    font-size: 20px;
+    color: #2b1108;
+    background: #fff;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.06) inset;
+}
+
+/* Color variants inspired by reference */
+.badge-brown { background: #F8981C; color: #fff; }
+.badge-brown-light { background: #FFD105; color: #ffffff; }
+.badge-pink { background: #E41E26; color: #ffffff; }
+.badge-rose { background: #F8981C; color: #ffffff; }
+.badge-orange { background: #FFD105; color: #ffffff; }
+.badge-red { background: #E41E26; color: #ffffff; }
+.badge-cream { background: #F8981C; color: #ffffff; }
+.badge-rust { background: #FFD105; color: #ffffff; }
 
 /* Section 2 Styles */
 #section-2 {

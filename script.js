@@ -9,17 +9,6 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
-
-
-
-
-
-
-
-
-
-
-
 // Initial loader animation
 document.addEventListener('DOMContentLoaded', function() {
   const loaderContainer = document.querySelector('.loader-container');
