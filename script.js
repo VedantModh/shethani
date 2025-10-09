@@ -9,6 +9,116 @@ function raf(time) {
 
 requestAnimationFrame(raf);
 
+// Responsive container positioning
+function handleResponsiveContainer() {
+  const leftSection = document.querySelector('#left-section');
+  const rightSection = document.querySelector('#right-section');
+  const sectionPart2 = document.querySelector('#section-part2');
+  
+  if (!leftSection || !rightSection || !sectionPart2) return;
+  
+  const windowWidth = window.innerWidth;
+  
+  // Reset any inline styles first
+  leftSection.style.position = '';
+  leftSection.style.top = '';
+  leftSection.style.left = '';
+  leftSection.style.transform = '';
+  
+  if (windowWidth <= 768) {
+    // Mobile: Stack vertically, center content
+    sectionPart2.style.flexDirection = 'column';
+    sectionPart2.style.alignItems = 'center';
+    sectionPart2.style.gap = '30px';
+    
+    leftSection.style.width = '100%';
+    leftSection.style.display = 'flex';
+    leftSection.style.flexDirection = 'column';
+    leftSection.style.alignItems = 'center';
+    leftSection.style.gap = '20px';
+    
+    rightSection.style.width = '100%';
+    rightSection.style.textAlign = 'center';
+    rightSection.style.paddingLeft = '0';
+  } else {
+    // Desktop: Side by side layout
+    sectionPart2.style.flexDirection = 'row';
+    sectionPart2.style.alignItems = 'center';
+    sectionPart2.style.gap = '0';
+    
+    leftSection.style.width = '50%';
+    leftSection.style.display = 'flex';
+    leftSection.style.flexDirection = 'row';
+    leftSection.style.alignItems = 'center';
+    leftSection.style.justifyContent = 'center';
+    leftSection.style.marginBottom = '100px';
+    
+    rightSection.style.width = '50%';
+    rightSection.style.textAlign = 'start';
+    rightSection.style.paddingLeft = '100px';
+  }
+}
+
+// Handle responsive image positioning within left-section
+function handleResponsiveImages() {
+  const leftSection = document.querySelector('#left-section');
+  const leftImages = document.querySelectorAll('#left-section img');
+  
+  if (!leftSection || !leftImages.length) return;
+  
+  const windowWidth = window.innerWidth;
+  
+  if (windowWidth <= 768) {
+    // Mobile: Stack images vertically and center them
+    leftImages.forEach((img, index) => {
+      img.style.position = 'relative';
+      img.style.top = '0';
+      img.style.left = '0';
+      img.style.transform = 'none';
+      img.style.zIndex = 'auto';
+      
+      if (index === 0) {
+        img.style.width = '100%';
+        img.style.maxWidth = '400px';
+        img.style.height = 'auto';
+      } else {
+        img.style.width = '120px';
+        img.style.height = '120px';
+        img.style.top = '-100px';
+        img.style.left = '50px';
+      }
+    });
+  } else {
+    // Desktop: Original positioning
+    if (leftImages[0]) {
+      leftImages[0].style.width = '500px';
+      leftImages[0].style.height = '300px';
+      leftImages[0].style.position = 'absolute';
+      leftImages[0].style.top = '30%';
+      leftImages[0].style.zIndex = '1';
+    }
+    
+    if (leftImages[1]) {
+      leftImages[1].style.width = '150px';
+      leftImages[1].style.height = '150px';
+      leftImages[1].style.position = 'relative';
+      leftImages[1].style.top = '40%';
+      leftImages[1].style.left = '20%';
+      leftImages[1].style.zIndex = '99';
+    }
+  }
+}
+
+// Call on load and resize
+window.addEventListener('load', () => {
+  handleResponsiveContainer();
+  handleResponsiveImages();
+});
+window.addEventListener('resize', () => {
+  handleResponsiveContainer();
+  handleResponsiveImages();
+});
+
 // Initial loader animation
 document.addEventListener('DOMContentLoaded', function() {
   const loaderContainer = document.querySelector('.loader-container');
@@ -41,6 +151,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof initSectionPart2Trigger === 'function') {
       initSectionPart2Trigger();
     }
+    
+    // Ensure responsive container positioning
+    handleResponsiveContainer();
+    handleResponsiveImages();
     
     // Remove loader from DOM after transition
     setTimeout(() => {
@@ -205,26 +319,31 @@ tl.to("#image-sec", {
   scale: "0.8",
 });
 
-// Mousemove Parallax Effect for Shethani Bottle
+// Mousemove Parallax Effect for Shethani Bottle (responsive)
 document.addEventListener("mousemove", (e) => {
   const images = document.querySelectorAll("#image-sec img, #left img, #right img"); // select ALL images
   const { clientX, clientY } = e;
   const centerX = window.innerWidth / 2;
   const centerY = window.innerHeight / 2;
 
-  // Calculate offset
-  const moveX = (clientX - centerX) * 0.02;
-  const moveY = (clientY - centerY) * 0.02;
+  // Calculate offset with responsive scaling
+  const windowWidth = window.innerWidth;
+  const parallaxIntensity = windowWidth <= 768 ? 0.01 : 0.02; // Reduce on mobile
+  
+  const moveX = (clientX - centerX) * parallaxIntensity;
+  const moveY = (clientY - centerY) * parallaxIntensity;
 
-  // Apply transform to every image
-  images.forEach((img) => {
-    gsap.to(img, {
-      x: -moveX,
-      y: -moveY,
-      duration: 0.5,
-      ease: "power2.out",
+  // Apply transform to every image (only on desktop)
+  if (windowWidth > 768) {
+    images.forEach((img) => {
+      gsap.to(img, {
+        x: -moveX,
+        y: -moveY,
+        duration: 0.5,
+        ease: "power2.out",
+      });
     });
-  });
+  }
 });
 
 
@@ -381,7 +500,7 @@ function startAnimations() {
 // gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(ScrollTrigger);
 
-// Create section-part2 trigger after loader to avoid missing onEnter
+// Create section-part2 trigger after loader to avoid missing onEnter (responsive)
 function initSectionPart2Trigger() {
   const sectionPart2Timeline = gsap.timeline({
     defaults: { immediateRender: false },
@@ -396,29 +515,60 @@ function initSectionPart2Trigger() {
     }
   });
 
-  sectionPart2Timeline.from("#section-part2 #left-section", {
-    x: -50,
-    opacity: 0,
-    duration: 0.5,
-  }, "+=0.1");
+  // Responsive animation based on screen size
+  const windowWidth = window.innerWidth;
+  
+  if (windowWidth <= 768) {
+    // Mobile: Different animation approach
+    sectionPart2Timeline.from("#section-part2 #left-section", {
+      y: 30,
+      opacity: 0,
+      duration: 0.5,
+    }, "+=0.1");
 
-  sectionPart2Timeline.from("#section-part2 #right-section h1", {
-    y: 50,
-    opacity: 0,
-    duration: 0.2,
-  }, "+=0.1");
+    sectionPart2Timeline.from("#section-part2 #right-section h1", {
+      y: 30,
+      opacity: 0,
+      duration: 0.3,
+    }, "+=0.1");
 
-  sectionPart2Timeline.from("#section-part2 #right-section h2", {
-    y: 50,
-    opacity: 0,
-    duration: 0.2,
-  }, "+=0.1");
+    sectionPart2Timeline.from("#section-part2 #right-section h2", {
+      y: 30,
+      opacity: 0,
+      duration: 0.3,
+    }, "+=0.1");
 
-  sectionPart2Timeline.from("#section-part2 #right-section h3", {
-    y: 50,
-    opacity: 0,
-    duration: 0.2,
-  }, "+=0.1");
+    sectionPart2Timeline.from("#section-part2 #right-section h3", {
+      y: 30,
+      opacity: 0,
+      duration: 0.3,
+    }, "+=0.1");
+  } else {
+    // Desktop: Original animation
+    sectionPart2Timeline.from("#section-part2 #left-section", {
+      x: -50,
+      opacity: 0,
+      duration: 0.5,
+    }, "+=0.1");
+
+    sectionPart2Timeline.from("#section-part2 #right-section h1", {
+      y: 50,
+      opacity: 0,
+      duration: 0.2,
+    }, "+=0.1");
+
+    sectionPart2Timeline.from("#section-part2 #right-section h2", {
+      y: 50,
+      opacity: 0,
+      duration: 0.2,
+    }, "+=0.1");
+
+    sectionPart2Timeline.from("#section-part2 #right-section h3", {
+      y: 50,
+      opacity: 0,
+      duration: 0.2,
+    }, "+=0.1");
+  }
 }
 
 

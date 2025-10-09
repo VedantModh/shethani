@@ -114,22 +114,6 @@ body {
     line-height: 1.5;
 }
 
-/* Improve touch targets for mobile */
-@media (max-width: 767px) {
-    .hamburger-menu {
-        height: 24px;
-        width: 30px;
-    }
-    
-    .hamburger-menu .line {
-        height: 4px;
-    }
-    
-    .card {
-        min-height: 120px;
-    }
-}
-
 #section-3 {
     width: 100%;
     height: auto;
@@ -408,10 +392,26 @@ body {
     max-height: 50% !important;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
+/* ===== COMPREHENSIVE RESPONSIVE DESIGN ===== */
 
-/* Large Desktop (1200px+) */
-@media screen and (min-width: 1200px) {
+/* Large Desktop (1400px+) */
+@media screen and (min-width: 1400px) {
+    .section2-cards {
+        margin: 0 500px;
+    }
+    
+    .ticker {
+        padding: 80px 0 100px;
+    }
+    
+    .badge {
+        font-size: 24px;
+        padding: 16px 30px;
+    }
+}
+
+/* Desktop (1200px - 1399px) */
+@media screen and (max-width: 1399px) and (min-width: 1200px) {
     .section2-cards {
         margin: 0 400px;
     }
@@ -426,7 +426,7 @@ body {
     }
 }
 
-/* Desktop (992px - 1199px) */
+/* Large Tablet (992px - 1199px) */
 @media screen and (max-width: 1199px) and (min-width: 992px) {
     .section2-cards {
         margin: 0 200px;
@@ -438,6 +438,55 @@ body {
     
     .section2-header h2 {
         font-size: 2.2rem;
+    }
+    
+    .section2-container {
+        padding: 6vw;
+    }
+    
+    /* Section 1 adjustments */
+    #section-1 {
+        height: 100vh;
+        gap: 40px;
+    }
+    
+    #hero-section h1 {
+        font-size: 8vw;
+    }
+    
+    #left, #right {
+        width: 30%;
+    }
+    
+    #image-sec img {
+        width: 60%;
+    }
+    
+    #right-section {
+        padding-left: 60px;
+    }
+    
+    #right-section h1, #right-section p {
+        font-size: 5.5vw;
+    }
+    
+    #right-section h2 {
+        font-size: 3.2vw;
+    }
+    
+    #right-section h3 {
+        font-size: 1.6vw;
+        width: 80%;
+    }
+    
+    /* Ticker adjustments */
+    .ticker {
+        padding: 40px 0 60px;
+    }
+    
+    .badge {
+        font-size: 20px;
+        padding: 12px 24px;
     }
 }
 
@@ -507,25 +556,19 @@ body {
         width: 85%;
     }
     
-/* Ticker responsive */
-.ticker {
-    padding: 30px 0 50px;
-    gap: 15px;
-}
-
-.badge {
-    font-size: 18px;
-    padding: 10px 20px;
-}
-
-.ticker__track {
-    gap: 12px;
-}
-
-/* Improve ticker performance on mobile */
-@media (max-width: 767px) {
+    /* Ticker responsive */
+    .ticker {
+        padding: 30px 0 50px;
+        gap: 15px;
+    }
+    
+    .badge {
+        font-size: 18px;
+        padding: 10px 20px;
+    }
+    
     .ticker__track {
-        animation-duration: 15s;
+        gap: 12px;
     }
 }
 
@@ -618,11 +661,26 @@ body {
     
     .ticker__track {
         gap: 10px;
+        animation-duration: 15s;
     }
     
     .ticker__row {
         mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    }
+    
+    /* Improve touch targets for mobile */
+    .hamburger-menu {
+        height: 24px;
+        width: 30px;
+    }
+    
+    .hamburger-menu .line {
+        height: 4px;
+    }
+    
+    .card {
+        min-height: 120px;
     }
 }
 
@@ -682,6 +740,7 @@ body {
     
     .ticker__track {
         gap: 8px;
+        animation-duration: 12s;
     }
 }
 
@@ -719,6 +778,10 @@ body {
         font-size: 12px;
         padding: 5px 10px;
     }
+    
+    .ticker__track {
+        animation-duration: 10s;
+    }
 }
 
 /* Landscape orientation adjustments */
@@ -734,6 +797,10 @@ body {
     
     .section2-container {
         padding: 2vw;
+    }
+    
+    #hero-section h1 {
+        font-size: 8vw;
     }
 }
 
@@ -789,6 +856,14 @@ body {
     align-items: center;
     justify-content: start;
     /* transform: translateY(100%); */
+}
+
+/* Responsive main container */
+@media screen and (max-width: 768px) {
+    #main {
+        width: 100%;
+        overflow-x: hidden;
+    }
 }
 
 
@@ -941,6 +1016,24 @@ body {
     /* transform: translate(-5%, 1%); */
 }
 
+/* Responsive section-part2 */
+@media screen and (max-width: 768px) {
+    #section-part2 {
+        flex-direction: column;
+        margin-top: 50px;
+        gap: 30px;
+        padding: 0 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #section-part2 {
+        margin-top: 30px;
+        gap: 20px;
+        padding: 0 15px;
+    }
+}
+
 #left-section {
     width: 50%;
     height: 100%;
@@ -951,6 +1044,24 @@ body {
     position: relative;
     margin-bottom: 100px;
     /* z-index: 99; */
+}
+
+/* Responsive left-section */
+@media screen and (max-width: 768px) {
+    #left-section {
+        width: 100%;
+        margin-top: 100px;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #left-section {
+        gap: 15px;
+        margin-top: 200px;
+    }
 }
 
 #left-section img:nth-child(1) {
@@ -976,6 +1087,37 @@ body {
     left: 20%;
 }
 
+/* Responsive left-section images */
+@media screen and (max-width: 768px) {
+    #left-section img:nth-child(1) {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    
+    #left-section img:nth-child(2) {
+        width: 120px;
+        height: 120px;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #left-section img:nth-child(1) {
+        max-width: 300px;
+    }
+    
+    #left-section img:nth-child(2) {
+        width: 100px;
+        height: 100px;
+    }
+}
+
 
 
 #right-section {
@@ -988,6 +1130,23 @@ body {
     text-align: start;
     padding-left: 100px;
     font-family: 'salmond'!important;
+}
+
+/* Responsive right-section */
+@media screen and (max-width: 768px) {
+    #right-section {
+        width: 100%;
+        margin-bottom: 100px;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #right-section {
+        padding: 0 10px;
+        margin-top: -200px;
+    }
 }
 
 #right-section h1 {
@@ -1028,6 +1187,41 @@ body {
     width: 76%;
 }
 
+/* Responsive right-section typography */
+@media screen and (max-width: 768px) {
+    #right-section h1, #right-section p {
+        font-size: 8vw;
+        letter-spacing: 8px;
+    }
+    
+    #right-section h2 {
+        font-size: 5vw;
+        white-space: normal;
+    }
+    
+    #right-section h3 {
+        font-size: 2.5vw;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #right-section h1, #right-section p {
+        font-size: 10vw;
+        letter-spacing: 5px;
+    }
+    
+    #right-section h2 {
+        font-size: 6vw;
+    }
+    
+    #right-section h3 {
+        font-size: 3vw;
+    }
+}
+
+/* Enhanced responsive styles for section-1 */
 @media (max-width: 992px) {
   #hero-section h1 {
     font-size: 8vw;
@@ -1043,13 +1237,61 @@ body {
 
   #image-sec img {
     width: 70%;
+    margin-top: 70px;
+  }
+  
+  #section-1 {
+    height: 100vh;
+    gap: 40px;
   }
 }
 
+@media (max-width: 768px) {
+  #section-1 {
+    height: auto;
+    padding-bottom: 50px;
+    gap: 20px;
+  }
+  
+  #hero-section h1 {
+    font-size: 12vw;
+  }
+  
+  #left, #right {
+    /* display: none; */
+    height: 100vh;
+  }
+  
+  #image-sec img {
+    width: 70%;
+    margin-top: 70px;
+  }
+  
+  #header img {
+    width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero-section h1 {
+    font-size: 14vw;
+  }
+  
+  #header img {
+    width: 100px;
+  }
+  
+  #image-sec img {
+    width: 85%;
+
+  }
+}
+
+/* Additional mobile optimizations */
 @media (max-width: 600px) {
   #section-1 {
     height: auto;
-    padding-bottom: 100px;
+    padding-bottom: 50px;
     gap: 20px;
   }
 
@@ -1058,7 +1300,8 @@ body {
   }
 
   #left, #right {
-    display: none; /* Hide side images for mobile */
+    height: 70vh;
+    /* display: none; Hide side images for mobile */
   }
 
   #image-sec img {
@@ -1068,6 +1311,18 @@ body {
   #header img {
     width: 120px;
   }
+}
+
+/* Touch targets for mobile */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        height: 24px;
+        width: 30px;
+    }
+    
+    .hamburger-menu .line {
+        height: 4px;
+    }
 }
 
 
@@ -1133,4 +1388,4 @@ body {
     100% {
         transform: translateY(0) rotate(0deg);
     }
-}}
+}
