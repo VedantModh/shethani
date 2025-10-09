@@ -110,6 +110,24 @@ body {
     background-color: #FEF6EF;
     user-select: none;
     overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Improve touch targets for mobile */
+@media (max-width: 767px) {
+    .hamburger-menu {
+        height: 24px;
+        width: 30px;
+    }
+    
+    .hamburger-menu .line {
+        height: 4px;
+    }
+    
+    .card {
+        min-height: 120px;
+    }
 }
 
 #section-3 {
@@ -390,11 +408,46 @@ body {
     max-height: 50% !important;
 }
 
-/* Media queries for responsive design */
-@media screen and (max-width: 992px) {
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Large Desktop (1200px+) */
+@media screen and (min-width: 1200px) {
+    .section2-cards {
+        margin: 0 400px;
+    }
+    
+    .ticker {
+        padding: 60px 0 80px;
+    }
+    
+    .badge {
+        font-size: 22px;
+        padding: 14px 26px;
+    }
+}
+
+/* Desktop (992px - 1199px) */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    .section2-cards {
+        margin: 0 200px;
+    }
+    
+    .section2-header h1 {
+        font-size: 3rem;
+    }
+    
+    .section2-header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* Tablet (768px - 991px) */
+@media screen and (max-width: 991px) {
     .section2-cards {
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: auto;
+        margin: 0 50px;
+        gap: 1.5vw;
     }
     
     .orange-box, .yellow-box, .yellow-product, .farm-box, 
@@ -406,11 +459,82 @@ body {
     .yellow-product {
         grid-column: span 2;
     }
+    
+    .section2-header h1 {
+        font-size: 2.8rem;
+    }
+    
+    .section2-header h2 {
+        font-size: 2rem;
+    }
+    
+    .section2-container {
+        padding: 6vw;
+    }
+    
+    /* Section 1 responsive */
+    #section-1 {
+        height: 100vh;
+        gap: 30px;
+    }
+    
+    #hero-section h1 {
+        font-size: 9vw;
+    }
+    
+    #left, #right {
+        width: 35%;
+    }
+    
+    #image-sec img {
+        width: 65%;
+    }
+    
+    #right-section {
+        padding-left: 50px;
+    }
+    
+    #right-section h1, #right-section p {
+        font-size: 6vw;
+    }
+    
+    #right-section h2 {
+        font-size: 3.5vw;
+    }
+    
+    #right-section h3 {
+        font-size: 1.8vw;
+        width: 85%;
+    }
+    
+/* Ticker responsive */
+.ticker {
+    padding: 30px 0 50px;
+    gap: 15px;
 }
 
-@media screen and (max-width: 576px) {
+.badge {
+    font-size: 18px;
+    padding: 10px 20px;
+}
+
+.ticker__track {
+    gap: 12px;
+}
+
+/* Improve ticker performance on mobile */
+@media (max-width: 767px) {
+    .ticker__track {
+        animation-duration: 15s;
+    }
+}
+
+/* Mobile Large (576px - 767px) */
+@media screen and (max-width: 767px) {
     .section2-cards {
         grid-template-columns: 1fr;
+        margin: 0 20px;
+        gap: 2vw;
     }
     
     .yellow-product {
@@ -423,6 +547,201 @@ body {
     
     .section2-header h2 {
         font-size: 1.8rem;
+    }
+    
+    .section2-container {
+        padding: 4vw;
+    }
+    
+    /* Section 1 mobile */
+    #section-1 {
+        height: auto;
+        padding-bottom: 50px;
+        gap: 20px;
+    }
+    
+    #hero-section h1 {
+        font-size: 12vw;
+    }
+    
+    #left, #right {
+        display: none;
+    }
+    
+    #image-sec img {
+        width: 80%;
+    }
+    
+    #header img {
+        width: 120px;
+    }
+    
+    #section-part2 {
+        flex-direction: column;
+        margin-top: 50px;
+        gap: 30px;
+    }
+    
+    #left-section, #right-section {
+        width: 100%;
+        padding: 0 20px;
+    }
+    
+    #right-section {
+        text-align: center;
+        align-items: center;
+    }
+    
+    #right-section h1, #right-section p {
+        font-size: 8vw;
+    }
+    
+    #right-section h2 {
+        font-size: 5vw;
+    }
+    
+    #right-section h3 {
+        font-size: 2.5vw;
+        width: 100%;
+    }
+    
+    /* Ticker mobile */
+    .ticker {
+        padding: 20px 0 40px;
+        gap: 12px;
+    }
+    
+    .badge {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    
+    .ticker__track {
+        gap: 10px;
+    }
+    
+    .ticker__row {
+        mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent);
+    }
+}
+
+/* Mobile Small (320px - 575px) */
+@media screen and (max-width: 575px) {
+    .section2-header h1 {
+        font-size: 2rem;
+    }
+    
+    .section2-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .section2-container {
+        padding: 3vw;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    .card h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* Section 1 small mobile */
+    #hero-section h1 {
+        font-size: 14vw;
+    }
+    
+    #header img {
+        width: 100px;
+    }
+    
+    #right-section h1, #right-section p {
+        font-size: 10vw;
+    }
+    
+    #right-section h2 {
+        font-size: 6vw;
+    }
+    
+    #right-section h3 {
+        font-size: 3vw;
+    }
+    
+    /* Ticker small mobile */
+    .ticker {
+        padding: 15px 0 30px;
+        gap: 10px;
+    }
+    
+    .badge {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .ticker__track {
+        gap: 8px;
+    }
+}
+
+/* Extra Small Mobile (max-width: 320px) */
+@media screen and (max-width: 320px) {
+    .section2-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .section2-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .card h3 {
+        font-size: 1rem;
+    }
+    
+    #hero-section h1 {
+        font-size: 16vw;
+    }
+    
+    #right-section h1, #right-section p {
+        font-size: 12vw;
+    }
+    
+    #right-section h2 {
+        font-size: 7vw;
+    }
+    
+    #right-section h3 {
+        font-size: 3.5vw;
+    }
+    
+    .badge {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    #section-1 {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .ticker {
+        padding: 20px 0;
+    }
+    
+    .section2-container {
+        padding: 2vw;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .badge {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 }
 
@@ -814,4 +1133,4 @@ body {
     100% {
         transform: translateY(0) rotate(0deg);
     }
-}
+}}
