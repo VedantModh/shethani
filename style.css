@@ -1432,7 +1432,7 @@ body {
 #section-4 .hscroll {
     display: flex;
     height: 100%;
-    width: max(300vw, 1800px);
+    width: max(400vw, 2400px); /* Increased for 4 frames */
 }
 
 #section-4 .frame {
@@ -1442,9 +1442,9 @@ body {
     align-items: center;
     justify-content: center;
     gap: 40px;
-    /* padding-left: 200px;
-    padding-right: 200px; */
+    padding: 40px;
 }
+
 .frame h1 {
     font-family: salmond;
     font-size: 10vw;
@@ -1454,15 +1454,19 @@ body {
     align-items: center;
     flex-direction: column;
     line-height: 1;
+    text-align: center;
 }
+
 .frame h2 {
     font-family: salmond;
     font-size: 5vw;
     color: #fff;
     line-height: 1;
+    text-align: center;
 }
-.frame h3{
-    font-family:'saira';
+
+.frame h3 {
+    font-family: 'saira';
     font-size: 2vw;
     font-weight: 300;
     color: #fff;
@@ -1470,8 +1474,18 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    line-height: 1;
+    line-height: 1.2;
     width: 80%;
+    text-align: center;
+}
+
+.frame .text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    max-width: 500px;
 }
 
 #section-4 .frame-2 .large {
@@ -1485,221 +1499,176 @@ body {
     filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
 }
 
+/* Responsive Section 4 */
+@media (max-width: 1200px) {
+    #section-4 .hscroll {
+        width: max(400vw, 2000px);
+    }
+    
+    .frame h1 {
+        font-size: 12vw;
+    }
+    
+    .frame h2 {
+        font-size: 6vw;
+    }
+    
+    .frame h3 {
+        font-size: 2.5vw;
+    }
+}
+
 @media (max-width: 992px) {
-    #section-4 { height: 90vh; }
-    #section-4 .prod-img { max-height: 65vh; }
+    #section-4 { 
+        height: 90vh; 
+    }
+    
+    #section-4 .hscroll {
+        width: max(400vw, 1800px);
+    }
+    
+    #section-4 .frame {
+        gap: 30px;
+        padding: 30px;
+    }
+    
+    #section-4 .prod-img { 
+        max-height: 60vh; 
+    }
+    
+    .frame h1 {
+        font-size: 14vw;
+    }
+    
+    .frame h2 {
+        font-size: 7vw;
+    }
+    
+    .frame h3 {
+        font-size: 3vw;
+        width: 90%;
+    }
 }
 
 @media (max-width: 768px) {
-    #section-4 { height: 80vh; }
-    #section-4 .frame { gap: 24px; padding: 24px; }
-    #section-4 .prod-img { max-height: 55vh; }
+    #section-4 { 
+        height: 80vh; 
+    }
+    
+    #section-4 .hscroll {
+        width: max(400vw, 1600px);
+    }
+    
+    #section-4 .frame { 
+        gap: 20px; 
+        padding: 20px; 
+        flex-direction: column;
+    }
+    
+    #section-4 .prod-img { 
+        max-height: 50vh; 
+    }
+    
+    .frame h1 {
+        font-size: 16vw;
+    }
+    
+    .frame h2 {
+        font-size: 8vw;
+    }
+    
+    .frame h3 {
+        font-size: 2.6vw;
+        width: 95%;
+        padding-bottom: 10px;
+    }
+    
+    .frame .text {
+        gap: 15px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    #section-4 { 
+        height: 75vh; 
+    }
+    
+    #section-4 .hscroll {
+        width: max(300vw, 1400px);
+    }
+    
+    #section-4 .frame { 
+        gap: 15px; 
+        padding: 15px; 
+    }
+    
+    #section-4 .prod-img { 
+        max-height: 45vh; 
+    }
+    
+    .frame h1 {
+        font-size: 18vw;
+    }
+    
+    .frame h2 {
+        font-size: 9vw;
+    }
+    
+    .frame h3 {
+        font-size: 4vw;
+    }
 }
 
 @media (max-width: 480px) {
-    #section-4 { height: 75vh; }
-    #section-4 .prod-img { max-height: 48vh; }
+    #section-4 { 
+        height: 70vh; 
+    }
+    
+    #section-4 .hscroll {
+        width: max(400vw, 1200px);
+    }
+    
+    #section-4 .frame { 
+        gap: 10px; 
+        padding: 10px; 
+    }
+    
+    #section-4 .prod-img { 
+        max-height: 20vh; 
+    }
+    
+    .frame h1 {
+        font-size: 18vw;
+    }
+    
+    .frame h2 {
+        font-size: 10vw;
+    }
+    
+    .frame h3 {
+        font-size: 4.5vw;
+    }
+    
+    .frame .text {
+        gap: 10px;
+    }
 }
 
+@media (max-width: 320px) {
+    
+    #section-4 .hscroll {
+        width: max(30vw, 1200px);
+    }}
+
+/* ================= Section 5: Carousel ================= */
 #section-5 {
     width: 100%;
     height: 100vh;
-    background: #fff;
+    background: #000;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-
-  
-  .carousel {
-    position: relative;
-    z-index: 1;
-    height: 100vh;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  
-  .carousel-item {
-    --items: 10;
-    --width: clamp(150px, 30vw,  300px);
-    --height: clamp(200px, 40vw,  400px);
-    --x: calc(var(--active) * 800%);
-    --y: calc(var(--active) * 200%);
-    --rot: calc(var(--active) * 120deg);
-    --opacity: calc(var(--zIndex) / var(--items) * 3 - 2);
-    overflow: hidden;
-    position: absolute;
-    z-index: var(--zIndex);
-    width: var(--width);
-    height: var(--height);
-    margin: calc(var(--height) * -0.5) 0 0 calc(var(--width) * -0.5);
-    border-radius: 10px;
-    top: 50%;
-    left: 50%;
-    user-select: none;
-    transform-origin: 0% 100%;
-    box-shadow: 0 10px 50px 10px rgba(0, 0, 0, .5);
-    background: black;
-    pointer-events: all;
-    transform:  translate(var(--x), var(--y)) rotate(var(--rot)) ;
-    transition: transform .8s cubic-bezier(0, 0.02, 0, 1);
-  
-    .carousel-box {
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
-      opacity: var(--opacity);
-      font-family: 'Orelo-sw-db', serif;
-  
-      &:before {
-        content: '';
-        position: absolute;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .5));
-      }
-    }
-  
-    .title {
-      position: absolute;
-      z-index: 1;
-      color: #fff;
-      bottom: 20px;
-      left: 20px;
-      transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
-      font-size: clamp(20px, 3vw, 30px);
-      text-shadow: 0 4px 4px rgba(0, 0, 0, .1);
-    }
-  
-    .num {
-      position: absolute;
-      z-index: 1;
-      color: #fff;
-      top: 10px;
-      left: 20px;
-      transition: opacity .8s cubic-bezier(0, 0.02, 0, 1);
-      font-size: clamp(20px, 10vw, 80px);
-    }
-  
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      pointer-events: none;
-    }
-  }
-  
-  .layout {
-    position: absolute;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  
-    &:before {
-      content: '';
-      position: absolute;
-      z-index: 1;
-      top: 0;
-      left: 90px;
-      width: 10px;
-      height: 100%;
-      border: 1px solid #fff;
-      border-top: none;
-      border-bottom: none;
-      opacity: .15;
-    }
-  
-    .box {
-      position: absolute;
-      bottom: 0;
-      left: 30px;
-      color: #fff;
-      transform-origin: 0% 10%;
-      transform: rotate(-90deg);
-      font-size: 9px;
-      line-height: 1.4;
-      text-transform: uppercase;
-      opacity: .4;
-    }
-  }
-  
-  .logo {
-    position: absolute;
-    z-index: 2;
-    top: 28px;
-    right: 28px;
-    width: 30px;
-    height: 30px;
-    background: #fff;
-    border-radius: 50%;
-    opacity: .5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Orelo-sw-db', serif;
-    pointer-events: all;
-    color: black;
-    text-decoration: none;
-    font-size: 20px;
-    overflow: hidden;
-    padding-bottom: .1em;
-  }
-  
-  .social {
-    position: absolute;
-    z-index: 10;
-    bottom: 20px;
-    right: 25px;
-    color: #fff;
-    opacity: .4;
-  
-    a {
-      display: inline-block;
-      margin-left: 3px;
-    }
-  
-    svg {
-      --fill: #fff;
-      width: 35px;
-      height: 35px;
-    }
-  }
-  
-  .cursor {
-    position: fixed;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    --size: 40px;
-    width: var(--size);
-    height: var(--size);
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, .2);
-    margin: calc(var(--size) * -0.5) 0 0 calc(var(--size) * -0.5);
-    transition: transform .85s cubic-bezier(0, 0.02, 0, 1);
-    display: none;
-    pointer-events: none;
-    
-    @media (pointer: fine) {
-      display: block;
-    }
-  }
-  
-  .cursor2 {
-    --size: 2px;
-    transition-duration: .7s;
-  }
- 
