@@ -73,7 +73,7 @@ function handleResponsiveImages() {
     leftImages.forEach((img, index) => {
       img.style.position = 'relative';
       img.style.top = '0';
-      img.style.left = '0';
+      // img.style.left = '0';
       img.style.transform = 'none';
       img.style.zIndex = 'auto';
       
@@ -104,7 +104,7 @@ function handleResponsiveImages() {
       leftImages[1].style.position = 'relative';
       leftImages[1].style.top = '40%';
       leftImages[1].style.left = '20%';
-      leftImages[1].style.zIndex = '99';
+      leftImages[1].style.zIndex = '909';
     }
   }
 }
@@ -123,12 +123,22 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', function() {
   const loaderContainer = document.querySelector('.loader-container');
   const mainContent = document.getElementById('main');
+  const loaderVideo = document.querySelector('.video-loader video');
+  
+  // Ensure loader scales correctly on orientation change and resize
+  function resizeLoader() {
+    if (!loaderContainer) return;
+    // Use dynamic viewport units on supported browsers
+    loaderContainer.style.height = `${Math.max(window.innerHeight, document.documentElement.clientHeight)}px`;
+  }
+  resizeLoader();
+  window.addEventListener('resize', resizeLoader);
+  window.addEventListener('orientationchange', resizeLoader);
   
   // Set up main content for animation
   mainContent.style.display = 'block';
   
   // Check if video is loaded and play it
-  const loaderVideo = document.querySelector('.video-loader video');
   
   // Function to handle video end
   function handleVideoEnd() {
@@ -302,22 +312,61 @@ function startAnimations() {
 
 }
 
-// Existing scroll animation
-var tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: "#section-1",
-    start: "0% ",
-    end: "50%",
-    scrub: true,
-  },
-});
+// =============================
+// Responsive Scroll Animation
+// =============================
+// Customize per breakpoint here (max-width). Adjust values to your liking.
+const responsiveAnimationConfig = {
+  default: { top: "88%", left: "-30%", rotate: "17deg", scale: 0.8 },
+  992:     { top: "75%", left: "-26%", rotate: "17deg", scale: 0.82 },
+  768:     { top: "58%", left: "0%", rotate: "17deg", scale: 0.85,zIndex:10000000, },
+  600:     { top: "55%", left: "-7%", rotate: "17deg", scale: 0.9  },
+  480:     { top: "64%", left: "-6%",  rotate: "17deg", scale: 0.95 },
+};
 
-tl.to("#image-sec", {
-  top: "85%",
-  left: "-30%",
-  rotate: "17deg",
-  scale: "0.8",
-});
+function getCurrentBreakpoint() {
+  if (window.matchMedia('(max-width: 480px)').matches) return 480;
+  if (window.matchMedia('(max-width: 600px)').matches) return 600;
+  if (window.matchMedia('(max-width: 768px)').matches) return 768;
+  if (window.matchMedia('(max-width: 992px)').matches) return 992;
+  return 'default';
+}
+
+let responsiveTl;
+function applyResponsiveScrollAnimation() {
+  const bp = getCurrentBreakpoint();
+  const cfg = responsiveAnimationConfig[bp] || responsiveAnimationConfig.default;
+
+  if (responsiveTl) {
+    responsiveTl.kill();
+    responsiveTl = null;
+  }
+
+  responsiveTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#section-1",
+      start: "top -20%",
+      end: "top -50%",
+      scrub: true,
+    },
+    defaults: { ease: 'none' }
+  });
+
+  responsiveTl.to("#image-sec", {
+    top: cfg.top,
+    left: cfg.left,
+    rotate: cfg.rotate,
+    scale: cfg.scale,
+  });
+
+  if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+    ScrollTrigger.refresh();
+  }
+}
+
+// Re-apply on viewport changes
+['(max-width: 992px)', '(max-width: 768px)', '(max-width: 600px)', '(max-width: 480px)']
+  .forEach(query => matchMedia(query).addEventListener('change', applyResponsiveScrollAnimation));
 
 // Mousemove Parallax Effect for Shethani Bottle (responsive)
 document.addEventListener("mousemove", (e) => {
@@ -349,6 +398,9 @@ document.addEventListener("mousemove", (e) => {
 
 
 
+
+// Kick off the responsive scroll animation once GSAP is ready
+window.addEventListener('load', applyResponsiveScrollAnimation);
 
 
 function startAnimations() {
