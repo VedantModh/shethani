@@ -318,6 +318,7 @@ function startAnimations() {
 // Customize per breakpoint here (max-width). Adjust values to your liking.
 const responsiveAnimationConfig = {
   default: { top: "88%", left: "-30%", rotate: "17deg", scale: 0.8 },
+  1200:     { top: "5%", left: "-26%", rotate: "17deg", scale: 0.82 },
   992:     { top: "75%", left: "-26%", rotate: "17deg", scale: 0.82 },
   768:     { top: "58%", left: "0%", rotate: "17deg", scale: 0.85,zIndex:10000000, },
   600:     { top: "55%", left: "-7%", rotate: "17deg", scale: 0.9  },
@@ -329,6 +330,7 @@ function getCurrentBreakpoint() {
   if (window.matchMedia('(max-width: 600px)').matches) return 600;
   if (window.matchMedia('(max-width: 768px)').matches) return 768;
   if (window.matchMedia('(max-width: 992px)').matches) return 992;
+  if (window.matchMedia('(max-width: 1200px)').matches) return 1200;
   return 'default';
 }
 
