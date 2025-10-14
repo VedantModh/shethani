@@ -1681,6 +1681,10 @@ body {
     object-fit: cover;
 }
 
+
+
+
+
 @media (max-width: 992px) {
     #section-5 { height: 90vh; }
     .section5-scene { width: 94vw; aspect-ratio: 16/10; }
