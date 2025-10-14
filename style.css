@@ -1432,7 +1432,7 @@ body {
 #section-4 .hscroll {
     display: flex;
     height: 100%;
-    width: max(400vw, 3200px); /* Increased for better large screen support */
+    width: max(400vw, 2400px); /* Increased for 4 frames */
 }
 
 #section-4 .frame {
@@ -1441,8 +1441,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 60px;
-    padding: 60px;
+    gap: 40px;
+    padding: 40px;
 }
 
 .frame h1 {
@@ -1499,239 +1499,22 @@ body {
     filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
 }
 
-/* Large Desktop (1400px+) */
-@media (min-width: 1400px) {
-    /* Section 1 Optimizations */
-    #section-1 {
-        padding: 60px;
-    }
-    
-    #hero-section h1 {
-        font-size: clamp(80px, 8vw, 120px);
-        line-height: 0.9;
-    }
-    
-    #section-part2 {
-        gap: 80px;
-        padding: 60px;
-    }
-    
-    #left-section {
-        gap: 40px;
-    }
-    
-    #right-section h1 {
-        font-size: clamp(60px, 6vw, 90px);
-    }
-    
-    #right-section h2 {
-        font-size: clamp(40px, 4vw, 60px);
-    }
-    
-    #right-section h3 {
-        font-size: clamp(18px, 1.8vw, 24px);
-        line-height: 1.6;
-    }
-    
-    /* Section 2 Optimizations */
-    .section2-container {
-        padding: 80px 60px;
-        gap: 60px;
-    }
-    
-    .section2-header h1 {
-        font-size: clamp(50px, 5vw, 80px);
-    }
-    
-    .section2-header h2 {
-        font-size: clamp(40px, 4vw, 60px);
-    }
-    
-    .section2-cards {
-        gap: 30px;
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .card h3 {
-        font-size: clamp(16px, 1.6vw, 22px);
-    }
-    
-    .card h2 {
-        font-size: clamp(20px, 2vw, 28px);
-    }
-    
-    /* Section 4 Optimizations */
+/* Responsive Section 4 */
+@media (max-width: 1200px) {
     #section-4 .hscroll {
-        width: max(400vw, 4000px);
-    }
-    
-    #section-4 .frame {
-        gap: 80px;
-        padding: 80px;
+        width: max(400vw, 2000px);
     }
     
     .frame h1 {
-        font-size: 8vw;
+        font-size: 12vw;
     }
     
     .frame h2 {
-        font-size: 4vw;
+        font-size: 6vw;
     }
     
     .frame h3 {
-        font-size: 1.8vw;
-    }
-    
-    #section-4 .prod-img {
-        max-height: 80vh;
-    }
-}
-
-/* Desktop (1200px - 1399px) */
-@media (min-width: 1200px) and (max-width: 1399px) {
-    /* Section 1 Optimizations */
-    #section-1 {
-        padding: 50px;
-    }
-    
-    #hero-section h1 {
-        font-size: clamp(70px, 7vw, 100px);
-    }
-    
-    #section-part2 {
-        gap: 60px;
-        padding: 50px;
-    }
-    
-    #right-section h1 {
-        font-size: clamp(50px, 5vw, 80px);
-    }
-    
-    #right-section h2 {
-        font-size: clamp(35px, 3.5vw, 50px);
-    }
-    
-    #right-section h3 {
-        font-size: clamp(16px, 1.6vw, 22px);
-    }
-    
-    /* Section 2 Optimizations */
-    .section2-container {
-        padding: 60px 50px;
-        gap: 50px;
-    }
-    
-    .section2-header h1 {
-        font-size: clamp(45px, 4.5vw, 70px);
-    }
-    
-    .section2-header h2 {
-        font-size: clamp(35px, 3.5vw, 50px);
-    }
-    
-    .section2-cards {
-        gap: 25px;
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    /* Section 4 Optimizations */
-    #section-4 .hscroll {
-        width: max(400vw, 3600px);
-    }
-    
-    #section-4 .frame {
-        gap: 70px;
-        padding: 70px;
-    }
-    
-    .frame h1 {
-        font-size: 9vw;
-    }
-    
-    .frame h2 {
-        font-size: 4.5vw;
-    }
-    
-    .frame h3 {
-        font-size: 2vw;
-    }
-    
-    #section-4 .prod-img {
-        max-height: 75vh;
-    }
-}
-
-/* Large Tablet/Desktop (992px - 1199px) */
-@media (min-width: 992px) and (max-width: 1199px) {
-    /* Section 1 Optimizations */
-    #section-1 {
-        padding: 40px;
-    }
-    
-    #hero-section h1 {
-        font-size: clamp(60px, 6vw, 90px);
-    }
-    
-    #section-part2 {
-        gap: 50px;
-        padding: 40px;
-    }
-    
-    #right-section h1 {
-        font-size: clamp(45px, 4.5vw, 70px);
-    }
-    
-    #right-section h2 {
-        font-size: clamp(30px, 3vw, 45px);
-    }
-    
-    #right-section h3 {
-        font-size: clamp(15px, 1.5vw, 20px);
-    }
-    
-    /* Section 2 Optimizations */
-    .section2-container {
-        padding: 50px 40px;
-        gap: 40px;
-    }
-    
-    .section2-header h1 {
-        font-size: clamp(40px, 4vw, 60px);
-    }
-    
-    .section2-header h2 {
-        font-size: clamp(30px, 3vw, 45px);
-    }
-    
-    .section2-cards {
-        gap: 20px;
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    /* Section 4 Optimizations */
-    #section-4 .hscroll {
-        width: max(400vw, 3000px);
-    }
-    
-    #section-4 .frame {
-        gap: 50px;
-        padding: 50px;
-    }
-    
-    .frame h1 {
-        font-size: 10vw;
-    }
-    
-    .frame h2 {
-        font-size: 5vw;
-    }
-    
-    .frame h3 {
-        font-size: 2.2vw;
-    }
-    
-    #section-4 .prod-img {
-        max-height: 70vh;
+        font-size: 2.5vw;
     }
 }
 
@@ -1882,10 +1665,33 @@ body {
 #section-5 {
     width: 100%;
     height: 100vh;
-    background: #000;
+    background: #FEF6EF;
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+#section-5 img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+@media (max-width: 992px) {
+    #section-5 { height: 90vh; }
+    .section5-scene { width: 94vw; aspect-ratio: 16/10; }
+}
+
+@media (max-width: 768px) {
+    #section-5 { height: 82vh; }
+    .section5-scene { width: 94vw; aspect-ratio: 16/11; }
+}
+
+@media (max-width: 575px) {
+    #section-5 { height: 78vh; }
+    .section5-scene { width: 96vw; aspect-ratio: 4/3; }
 }
