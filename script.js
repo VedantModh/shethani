@@ -1,13 +1,19 @@
-// Initialize Lenis
+// Initialize Lenis and sync with GSAP/ScrollTrigger
 const lenis = new Lenis();
 
-// Use requestAnimationFrame to continuously update the scroll
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
+// Ensure ScrollTrigger updates on Lenis scroll
+lenis.on('scroll', () => {
+  if (window.ScrollTrigger) {
+    ScrollTrigger.update();
+  }
+});
 
-requestAnimationFrame(raf);
+// Drive Lenis using GSAP's ticker to keep everything in sync
+gsap.ticker.add((time) => {
+  // gsap's time is in seconds; Lenis expects milliseconds
+  lenis.raf(time * 1000);
+});
+gsap.ticker.lagSmoothing(0);
 
 // Responsive container positioning
 function handleResponsiveContainer() {
@@ -58,6 +64,57 @@ function handleResponsiveContainer() {
     rightSection.style.paddingLeft = '100px';
   }
 }
+
+// =============================
+// Section 5: Logo Scale Animation
+// =============================
+function initSection5LogoAnimation() {
+  const section = document.querySelector('#section-5');
+  const clipReveal = document.querySelector('.clip-reveal');
+  const clipContent = document.querySelector('.clip-reveal .clip-content');
+  const familyImage = document.querySelector('.family-image-container');
+
+  if (!section || !clipReveal || !clipContent || !familyImage) return;
+
+  // Prevent double initialization
+  if (section.dataset.logoAnimInit === '1') return;
+  section.dataset.logoAnimInit = '1';
+
+  // Initial states
+  gsap.set(section, { height: '100vh' });
+  // Ensure initial mask size matches CSS (auto width, fixed height)
+  gsap.set(clipContent, { WebkitMaskSize: 'auto 360px', maskSize: 'auto 360px' });
+  gsap.set(familyImage, { opacity: 0 });
+
+  // Timeline: grow container + scale logo container, then fade in family image
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: 'top top',
+      end: '+=150%',
+      scrub: 1,
+      pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true,
+    }
+  });
+
+  tl.to(section, { height: '180vh', ease: 'none' }, 0)
+    // Grow only the bottle mask by height from center; background stays fixed
+    .to(clipContent, { WebkitMaskSize: 'auto 4000px', maskSize: 'auto 4000px', ease: 'none' }, 0)
+    // .to(clipReveal, { opacity: 0, ease: 'none' }, 0.6)
+    .to(familyImage, { opacity: 1, ease: 'none' }, 0.7);
+
+  // Refresh once family image loads to ensure correct pin spacing
+  const familyImgEl = section.querySelector('img.family-image');
+  if (familyImgEl && !familyImgEl.complete) {
+    familyImgEl.addEventListener('load', () => ScrollTrigger.refresh(), { once: true });
+  } else {
+    ScrollTrigger.refresh();
+  }
+}
+
+// (init moved to run after section 4 is initialized on window load)
 
 // Handle responsive image positioning within left-section
 function handleResponsiveImages() {
@@ -343,22 +400,24 @@ function applyResponsiveScrollAnimation() {
     responsiveTl = null;
   }
 
-  responsiveTl = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#section-1",
-      start: "top -20%",
-      end: "top -50%",
-      scrub: true,
-    },
-    defaults: { ease: 'none' }
-  });
+// Existing scroll animation
+var tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#main",
+    start: "0% -20%",
+    end: "13% -15%",
+    scrub: true,
+    // markers: true,
+  },
+});
 
-  responsiveTl.to("#image-sec", {
-    top: cfg.top,
-    left: cfg.left,
-    rotate: cfg.rotate,
-    scale: cfg.scale,
-  });
+tl.to("#image-sec", {
+  top: "85%",
+  left: "-30%",
+  rotate: "12deg", // 20deg
+  scale: "0.8",
+  // zIndex: "95",
+});
 
   if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
     ScrollTrigger.refresh();
@@ -433,6 +492,12 @@ window.addEventListener('load', () => {
   initSection4HorizontalScroll();
   // Recalculate on resize/rotation
   window.addEventListener('resize', () => ScrollTrigger.refresh());
+  // Initialize section 5 after section 4 has been set up
+  initSection5LogoAnimation();
+  // Ensure proper measurements once both are registered
+  if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
+    ScrollTrigger.refresh();
+  }
 });
 
 
@@ -717,4 +782,6 @@ function initScrollAnimations() {
     );
   }
 }
+
+// (duplicate removed; using the container-growth version defined above)
 

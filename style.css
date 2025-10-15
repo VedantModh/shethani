@@ -1665,7 +1665,7 @@ body {
 #section-5 {
     width: 100%;
     height: 100vh;
-    background: #FEF6EF;
+    background: #ffffff;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -1673,29 +1673,88 @@ body {
     justify-content: center;
 }
 
+/* Clip-mask reveal */
+.clip-reveal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background-color: #fff;
+}
+
+.clip-content {
+    position: absolute;
+    inset: 0;               /* fill viewport */
+    background-image: url('Rectangle 68.png'); /* fixed-size background behind mask */
+    background-size: cover; /* stays tied to viewport, not transform */
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-mask-image: url('shethani11.png'); /* bottle silhouette */
+    mask-image: url('shethani11.png');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    -webkit-mask-size: auto 460px; /* initial bottle height */
+    mask-size: auto 460px;
+    -webkit-mask-origin: content-box;
+    mask-origin: content-box;
+    background-color: #fff;
+}
 
 
-#section-5 img{
-    width: 100px;
-    height: 100px;
+.family-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* will fade to 1 at the end */
+    background-color: #fff;
+    z-index: 5;
+}
+
+.family-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    clip-path:url(shethani11.png) ;
+    border-radius: 12px;
+    background-color: #fff;
 }
 
 
 
 
 
+/* Responsive Section 5 */
 @media (max-width: 992px) {
     #section-5 { height: 90vh; }
-    .section5-scene { width: 94vw; aspect-ratio: 16/10; }
+    .scaling-logo { width: 180px; }
 }
 
 @media (max-width: 768px) {
     #section-5 { height: 82vh; }
-    .section5-scene { width: 94vw; aspect-ratio: 16/11; }
+    .scaling-logo { width: 160px; }
 }
 
 @media (max-width: 575px) {
     #section-5 { height: 78vh; }
-    .section5-scene { width: 96vw; aspect-ratio: 4/3; }
+    .scaling-logo { width: 140px; }
+}
+
+#section-6 {
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
