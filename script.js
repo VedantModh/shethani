@@ -499,34 +499,6 @@ window.addEventListener('load', () => {
     ScrollTrigger.refresh();
   }
 
-  // Section 6: init Swiper slider with centered slides
-  function initRecipesSwiper() {
-    if (!window.Swiper) return;
-    if (window.recipesSwiper && typeof window.recipesSwiper.destroy === 'function') {
-      window.recipesSwiper.destroy(true, true);
-    }
-    window.recipesSwiper = new Swiper('#section-6 .recipes-grid', {
-      slidesPerView: 1.1,
-      spaceBetween: 16,
-      centeredSlides: true,
-      loop: true,
-      loopAdditionalSlides: 6,
-      speed: 700,
-      autoplay: { delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true },
-      grabCursor: true,
-      pagination: { el: '#section-6 .swiper-pagination', clickable: true },
-      navigation: { nextEl: '#section-6 .swiper-button-next', prevEl: '#section-6 .swiper-button-prev' },
-      breakpoints: {
-        600: { slidesPerView: 2.1 },
-        992: { slidesPerView: 3, centeredSlides: true }
-      },
-      watchOverflow: true,
-      observer: true,
-      observeParents: true,
-    });
-  }
-  initRecipesSwiper();
-  window.addEventListener('load', initRecipesSwiper);
 
   // Section 7: fade-in footer elements
   if (window.ScrollTrigger) {
