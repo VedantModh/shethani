@@ -1834,7 +1834,7 @@ body {
 .recipes {
     width: 100%;
     /* max-width: 100px; */
-    padding: 80px 100px;
+    padding: 80px 30px;
 }
 
 .recipes-title {
@@ -1849,7 +1849,7 @@ body {
 .recipes-grid { position: relative; width: 100%; overflow: hidden; display: block; }
 .recipes-grid .swiper-wrapper { display: flex; padding: 8px 0 24px; }
 .recipes-grid .swiper-slide { height: auto; }
-.recipes-grid .swiper-button-prev, .recipes-grid .swiper-button-next { color: #F8981C; }
+.recipes-grid .swiper-button-prev, .recipes-grid .swiper-button-next h{ color: #F8981C; }
 .recipes-grid .swiper-pagination-bullet { background: #F8981C; opacity: 0.4; }
 .recipes-grid .swiper-pagination-bullet-active { opacity: 1; }
 
