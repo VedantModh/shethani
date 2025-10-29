@@ -801,6 +801,38 @@ function initScrollAnimations() {
       }
     );
   }
+
+  // Oil images scroll-based animations
+  const oilImage = document.querySelector(".oil img");
+  const oil1Image = document.querySelector(".oil1 img");
+  
+  if (oilImage) {
+    gsap.to(oilImage, {
+      y: 180,
+      duration: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#section-2",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+  }
+  
+  if (oil1Image) {
+    gsap.to(oil1Image, {
+      y: -180,
+      duration: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#section-2",
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+      }
+    });
+  }
 }
 
 // (duplicate removed; using the container-growth version defined above)

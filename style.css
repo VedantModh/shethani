@@ -194,7 +194,7 @@ body {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 22px;
+    /* padding: 2px 22px; */
     border-radius: 999px;
     font-family: 'salmond', sans-serif;
     font-size: 20px;
@@ -244,12 +244,12 @@ body {
     font-family: 'salmond', sans-serif;
     font-size: 3.5rem;
     color: #FF8C00;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .section2-header h2 {
     font-family: 'salmond', sans-serif;
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     color: #FF8C00;
 }
 
@@ -435,7 +435,7 @@ body {
     
     .badge {
         font-size: 24px;
-        padding: 16px 30px;
+        padding: 5px 40px;
     }
 }
 
@@ -1373,20 +1373,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: oil-float-sway 1.6s ease-in-out infinite;
 }
 
-@keyframes oil-float-sway {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-10px) rotate(-20deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-}
 
 .oil1{
     width: 100px;
@@ -1405,20 +1393,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: fill;
-    animation: oil-float-sway1 1.6s ease-in-out infinite;
 }
 
-@keyframes oil-float-sway1 {
-    0% {
-        transform: translateY(0) rotate(0deg);
-    }
-    50% {
-        transform: translateY(-10px) rotate(20deg);
-    }
-    100% {
-        transform: translateY(0) rotate(0deg);
-    }
-}
 
 /* ================= Section 4: Horizontal Scroll ================= */
 #section-4 {
@@ -1462,7 +1438,7 @@ body {
     font-size: 5vw;
     color: #fff;
     line-height: 1;
-    text-align: center;
+    text-align: start;
 }
 
 .frame h3 {
@@ -1475,14 +1451,14 @@ body {
     align-items: center;
     flex-direction: column;
     line-height: 1.2;
-    width: 80%;
-    text-align: center;
+    width: 100%;
+    text-align: start;
 }
 
 .frame .text {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     gap: 20px;
     max-width: 500px;
@@ -1889,7 +1865,7 @@ body {
 
 .recipe-desc {
     font-family: saira;
-    font-size: 12px;
+    font-size: 15px;
     color: #fff;
 }
 
