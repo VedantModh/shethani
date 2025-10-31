@@ -375,7 +375,7 @@ function startAnimations() {
 // =============================
 // Customize per breakpoint here (max-width). Adjust values to your liking.
 const responsiveAnimationConfig = {
-  default: { top: "88%", left: "-30%", rotate: "17deg", scale: 0.8 },
+  default: { top: "85%", left: "-30%", rotate: "17deg", scale: 0.8 },
   992:     { top: "75%", left: "-26%", rotate: "17deg", scale: 0.82 },
   768:     { top: "58%", left: "0%", rotate: "17deg", scale: 0.85,zIndex:10000000, },
   600:     { top: "55%", left: "-7%", rotate: "17deg", scale: 0.9  },
@@ -412,7 +412,7 @@ var tl = gsap.timeline({
 });
 
 tl.to("#image-sec", {
-  top: "85%",
+  top: "80%",
   left: "-30%",
   rotate: "12deg", // 20deg
   scale: "0.8",
@@ -754,7 +754,7 @@ function initScrollAnimations() {
     y: 40,
     opacity: 0,
     stagger: 0.15,
-    duration: 0.6,
+    duration: 1,
     ease: "power3.out",
     scrollTrigger: {
       trigger: "#section-2",
@@ -763,6 +763,25 @@ function initScrollAnimations() {
       once: true,
     },
   });
+
+  // Section 2 header blur-to-clear effect
+  gsap.fromTo([".section2-header h1", ".section2-header h2"],
+    { filter: "blur(8px)" ,
+      scale: 1.3,
+    },
+    {
+      filter: "blur(0px)",
+      duration: 0.8,
+      scale: 1,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: "#section-2",
+        start: "top 85%",
+        toggleActions: "play none none none",
+        once: true,
+      },
+    }
+  );
 
   // Each card animates as it approaches the viewport
   gsap.utils.toArray("#section-2 .section2-cards .card").forEach((card, index) => {
@@ -833,6 +852,32 @@ function initScrollAnimations() {
       }
     });
   }
+
+  // User-requested: left-section oil and peanuts GSAP scale on scroll effect
+  gsap.from("#left-section img", {
+    scale: 0,
+    duration: 1,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#section-part2",
+      start: "top 30%",
+      end: "top 25%",
+      scrub: 3, // animation reverses on scroll up
+    }
+  });
+
+  gsap.from("#center-section img", {
+    scale: 0,
+    duration: 1,
+    ease: "none",
+    delay: 1,
+    scrollTrigger: {
+      trigger: "#section-part2",
+      start: "top 35%",
+      end: "top 30%",
+      scrub: 3, // animation reverses on scroll up
+    }
+  });
 }
 
 // (duplicate removed; using the container-growth version defined above)
